@@ -1,37 +1,47 @@
 const BST = require("./BST");
 
 class AVLTree extends BST {
-  constructor(value) {
-    super(value);
-  }
-
-  insert(value) {
-    let parentNode = super.insert(value);
-    if (this.left.getHeight() - this.right.getHeight() > 1) {
-
+    constructor(value) {
+        super(value);
     }
-    else if (this.right.getHeight() - this.left.getHeight() < 1) {
-      this._rotateLeft(parentNode);
-    }
-  }
 
-  _rotateLeft(subtree) {
-    console.log("Rearranging at ", subtee.val);
-    let copy = subtree;
-    subtree = subtree.right;
-    copy.right = subtree.left;
-    subtree.left = copy;
-  }
-  _rotateRight(subtee) {
-    
-  }
+    insert(value) {
+        console.log(this.val);
+        // if (!this.left || !this.right) {
+        //   super.insert(value);
+        // }
+        let balance = this.left.getHeight() - this.right.getHeight();
+        if (balance > 1) {
+            _rotateRight(this);
+            super.insert(value);
+
+        } else if (balance < -1) {
+            _rotateLeft(this);
+            super.insert(value);
+        } else {
+            this.insert(value);
+        }
+    }
+
+    _rotateLeft(subtree) {
+        let copy = subtree;
+        subtree = copy.right;
+        copy.right = subtree.left;
+        subtree.left = copy;
+    }
+
+    _rotateRight(subtee) {
+        let copy = subtree;
+        subtree = copy.left;
+        copy.left = subtree.right;
+        subtree.right = copy;
+    }
 }
-const bst = new BST(10);
-bst.insert(20);
-bst.insert(30);
-bst.insert(5);
+const bst = new AVLTree(10);
+bst.insert(8);
 bst.insert(15);
-bst.insert(25);
-bst.insert(22);
+bst.insert(5);
+bst.insert(9);
+bst.insert(2);
 
 console.log(bst);
