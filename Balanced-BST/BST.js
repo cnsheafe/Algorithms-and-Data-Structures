@@ -42,12 +42,3 @@ class BST {
 }
 
 module.exports = BST;
-// const bst = new BST(10);
-// bst.insert(20);
-// bst.insert(30);
-// bst.insert(5);
-// bst.insert(15);
-// bst.insert(25);
-
-// console.log(bst.root);
-// console.log(bst.getHeight());
