@@ -65,12 +65,5 @@ class AVLTree extends BST {
         this._checkBalance();
     }
 }
-const bst = new AVLTree(10);
-bst.insert(5);
-bst.insert(15);
-bst.insert(13);
-bst.insert(20);
-bst.insert(25);
-bst.insert(1);
 
-console.log(bst.root);
+module.exports = AVLTree;
